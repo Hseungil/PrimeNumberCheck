@@ -7,11 +7,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var LblA: UILabel!
     @IBOutlet weak var textA: UITextField!
     
-    var isPrime = true
     
     @IBAction func Check(_ sender: Any) {
         
-        // optional binding(Conditional unwraping)을 사용하여 0과 숫자값을 제외함
+        // optional binding(Conditional unwraping)을 사용하여 0과 숫자값을 제외한다. (nil값인지 판단)
         if let number = Int(textA.text!) {
            
             var isPrime = true
@@ -26,6 +25,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 isPrime = false
             }
         
+
             if number != 1 && number != 2 {
                 for i in 2 ..< number {
                     if number % i == 0 {
@@ -33,8 +33,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
                     }
                 }
             }
-        
-            if isPrime == true {
+            
+            
+            
+            //입력값이 0이거나 음수 일때 처리...
+            
+        if isPrime == true {
                 LblA.text = "prime number"
             } else {
                 LblA.text = "Not Prime number"
@@ -54,6 +58,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         textA.placeholder = "ex) 7"
         textA.clearButtonMode = UITextField.ViewMode.always
     }
+    
+    
     
     // background view를 누르면 키패드가 내려감
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
